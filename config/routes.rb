@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 
   root "listings#index"
 
+  resources :listings, only: [:new, :create]
+
 end
