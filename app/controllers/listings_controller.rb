@@ -11,7 +11,11 @@ class ListingsController < ApplicationController
 
   def create
     @listing = Listing.create(listing_params)
-    redirect_to root_path
+    if @listing.valid?
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
