@@ -13,6 +13,26 @@
 
   <body>
 
+    <ul class="navbar-nav">
+      <% if current_user %>
+        <li class="nav-item">
+
+          You're signed in as <%= current_user.email %>.
+          <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+        </li>
+
+      <% else %>
+
+        <li class="nav-item">
+          <%= link_to "Sign In", new_user_session_path, class: 'nav-link' %>
+          <%= link_to "Sign Up", new_user_registration_path, class: 'nav-link' %>
+        </li>
+
+      <% end %>
+    </ul>
+
+
+
     <% if notice.present? %>
       <p class="alert alert-info"> <%= notice %> </p>
     <% end %>
